@@ -1,0 +1,12 @@
+{
+  "name": "cookie-bike",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Cookie bike",
+  "author": "Damien Clarke",
+  "license": "MIT",
+  "main": "n/a",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
