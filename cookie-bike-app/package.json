@@ -5,8 +5,12 @@
   "description": "Cookie bike",
   "author": "Damien Clarke",
   "license": "MIT",
-  "main": "n/a",
+  "main": "src/index.js",
+  "scripts": {
+    "start-dev": "node src/index.js"
+  },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "johnny-five": "^1.0.0"
   }
 }
