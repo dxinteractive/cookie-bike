@@ -6,26 +6,27 @@ const five = require("johnny-five");
 const board = new five.Board();
 const pin = 2;
 const sleepWhenLongerThan = 3000;
+const ignoreIntervalLessThan = 100;
 
-let interval = "";
+let interval = 0;
 let lastRotate = new Date();
 
 board.on("ready", () => {
     console.log(`Cookie Bike App is ready to connect to Arduino`);
+
     let button = new five.Button({
         pin,
         isPullup: true
     });
 
-    let led = new five.Led(13);
-
-    button.on("down", function(value) {
-        lastRotate = new Date();
-        led.on();
-    });
-
-    button.on("up", function() {
-        led.off();
+    button.on("down", (value) => {
+        let now = new Date();
+        let diff = now - lastRotate;
+        if(diff < ignoreIntervalLessThan) {
+            return;
+        }
+        interval = diff;
+        lastRotate = now;
     });
 });
 
@@ -46,19 +47,11 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-
-    // move this logic somewhere with a constant timer
-
-    // let now = new Date();
-    // let diff = now - lastRotate;
-    // if(diff > sleepWhenLongerThan) {
-    //     interval = "";
-    // } else {
-    //     interval = `${diff}`;
-    // }
-    // console.log("interval", interval);
-
-    res.send(interval);
+    let now = new Date();
+    let diff = now - lastRotate;
+    diff = Math.max(diff, interval);
+    let response = diff < sleepWhenLongerThan ? `${diff}` : ``;
+    res.send(response);
 });
 
 app.listen(port, () => console.log(`Cookie Bike App is ready to connect to Cookie Bike Script (port ${port})`));

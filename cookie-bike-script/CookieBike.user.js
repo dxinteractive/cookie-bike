@@ -13,9 +13,12 @@
 //
 
 const repeatWith = (fn, repeatTime) => {
-    fn().then(() => {
-        setTimeout(() => repeatWith(fn, repeatTime), repeatTime);
-    });
+    let promise = fn();
+    if(promise) {
+        promise.then(() => {
+            setTimeout(() => repeatWith(fn, repeatTime), repeatTime);
+        });
+    }
 };
 
 //
@@ -24,6 +27,7 @@ const repeatWith = (fn, repeatTime) => {
 
 const cookieBikeAppPort = 3101;
 const cookieBikeAppReadInterval = 250; // ms
+const multiplier = 6;
 
 //
 // State
@@ -43,6 +47,7 @@ const tick = () => {
     if(clicking && diff > clickInterval) {
         lastClick = now;
         window.Game.ClickCookie();
+        console.log(`${1000 / clickInterval} clicks per second!`);
     }
     return Promise.resolve();
 };
@@ -56,7 +61,9 @@ const readSpeed = () => {
         .then(response => response.text())
         .then(response => {
             clicking = !!response;
-            clickInterval = Number(response);
+            clickInterval = response
+                ? Number(response) / multiplier
+                : 0;
         })
         .catch(() => {
             alert("Could not find the Cookie Bike App. Please start the Cookie Bike App and press OK");
@@ -83,8 +90,15 @@ const askCookieBike = () => {
     }
 };
 
-(function() {
+const waitUntilLoaded = () => {
+    if(!window.Game.ClickCookie) {
+        return Promise.resolve();
+    }
+    setTimeout(askCookieBike, 1000);
+};
+
+(() => {
     'use strict';
     console.log("I AM AT THE COOKIE PLACE!");
-    setTimeout(askCookieBike, 2500);
+    repeatWith(waitUntilLoaded, 1000);
 })();
