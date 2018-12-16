@@ -27,7 +27,6 @@ const repeatWith = (fn, repeatTime) => {
 
 const cookieBikeAppPort = 3101;
 const cookieBikeAppReadInterval = 250; // ms
-const multiplier = 6;
 
 //
 // State
@@ -36,7 +35,50 @@ const multiplier = 6;
 let clickInterval = 3000;
 let clicking = true;
 let lastClick = new Date();
+let multiplier = 6;
 
+//
+// Saved data
+//
+
+const isMultiplierValid = (multiNumber) => typeof multiNumber === "number"
+    && !isNaN(multiNumber)
+    && multiNumber > 0;
+
+const loadMultiplier = () => {
+    try {
+        let savedMultiplier = Number(localStorage.getItem("cookieBikeMultiplier") || 6);
+        if(!isMultiplierValid(savedMultiplier)) {
+            throw new Error();
+        }
+        multiplier = savedMultiplier;
+        console.log(`CookieBikeScript loaded multiplier value: ${multiplier}`);
+    } catch(e) {
+        console.log(`CookieBikeScript error: could not get multiplier`);
+    }
+};
+
+const getMultiplier = () => multiplier;
+
+const setMultiplier = (multiNumber) => {
+    try {
+        if(!isMultiplierValid(multiNumber)) {
+            throw new Error();
+        }
+        localStorage.setItem("cookieBikeMultiplier", multiNumber + "");
+        multiplier = multiNumber;
+     } catch(e) {
+        console.log("Cookie Bike Error: could not set multiplier");
+    }
+};
+
+const resetMultiplier = (multiNumber) => {
+    try {
+        localStorage.removeItem("cookieBikeMultiplier");
+     } catch(e) {
+        console.log("Cookie Bike Error: could not reset multiplier");
+    }
+};
 //
 // Cookie Bike Script > Cookie Clicker
 //
@@ -73,6 +115,15 @@ const readSpeed = () => {
         });
 };
 
+//
+// console object
+//
+
+window.CookieBike = {
+    getMultiplier,
+    setMultiplier,
+    resetMultiplier
+};
 
 //
 // startup and prompts
@@ -80,6 +131,7 @@ const readSpeed = () => {
 
 const startCookieBike = () => {
     alert('OK! Start the Cookie Bike App and get ready to pedal!');
+    loadMultiplier();
     repeatWith(tick, 1);
     repeatWith(readSpeed, cookieBikeAppReadInterval);
 };

@@ -3,22 +3,12 @@
 Cookie bike goes:
 
 Exercise bike > Arduino > Computer
-- Exercise bike pedal sensor 3.5mm plug goes to Arduino (Pin 1 and GND).
+- Exercise bike pedal sensor 3.5mm plug goes to Arduino (Pin 2 and GND).
 - Arduino USB goes to Computer USB Port.
 
 Cookie Bike has 2 software components:
 - Cookie Bike App, a node app that controls the Arduino, calculates the pedalling speed and makes the result available to Cookie Bike Script.
 - Cookie Bike Script, a browser Userscript that asks Cookie Bike App for data and controls the clicking of the Cookie Clicker cookie.
-
-## Usage
-
-Do setup first if you haven't already
-
-- Plug in stuff ^^^
-- Start Cookie Bike App
-  - Open terminal and go to `cookie-bike/cookie-bike-app`, then run `yarn start-dev`
-- Go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome
-- Pedal!
 
 ## Setup
 
@@ -55,3 +45,26 @@ I used an Arduino Micro, which required me to [follow these instructions](http:/
 2. Install [Tampermonkey](https://tampermonkey.net)
 3. Add `cookie-bike-script/CookieBike.user.js` to Tampermonkey
 4. If you go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome it should now ask you if you want to use Cookie Bike
+
+## Usage
+
+Do setup first if you haven't already.
+
+- Plug in stuff
+  - Exercise bike pedal sensor 3.5mm plug goes to Arduino (Pin 2 and GND).
+  - Arduino USB goes to Computer USB Port.
+- Start Cookie Bike App
+  - Windows: start `/cookie-bike-app/cookie-bike-win.exe`
+  - Mac: start `/cookie-bike-app/cookie-bike-mac`
+  - Linux: start `/cookie-bike-app/cookie-bike-linux`
+- Go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome
+- Pedal!
+
+## Development
+
+You need `node` and `yarn` (or `npm`) to dev cookie-bike-app.
+- Run `yarn` (or `npm install`) in `cookie-bike-app` directory
+- Run `yarn start-dev` to run the app
+- Run `yarn build` to build the app into executables
+
+You only really need [Tampermonkey](https://tampermonkey.net) to dev cookie-bike-script.

@@ -6,11 +6,16 @@
   "author": "Damien Clarke",
   "license": "MIT",
   "main": "src/index.js",
+  "bin": "src/index.js",
   "scripts": {
-    "start-dev": "node src/index.js"
+    "build": "node pkg .",
+    "start-dev": "node ."
   },
   "dependencies": {
     "express": "^4.16.4",
     "johnny-five": "^1.0.0"
+  },
+  "devDependencies": {
+    "pkg": "^4.3.5"
   }
 }
