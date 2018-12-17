@@ -14,13 +14,19 @@ Cookie Bike has 2 software components:
 
 ## Your bike 🚴
 
-Cookie Bike measures the rate you pedal at by detecting a completed circuit once per pedal cycle. The exercise bike we have as a 3.5mm TS jack which acts like a normally open switch, but which closes for a bit each revolution. If the Arduino's GND is connected to the sleeve of the 3.5mm jack and Pin 2 of the Arduino is connected to the tip of the 3.5mm jack, then the Arduino and Cookie Bike App can measuring how often the circuit is closed, and work out the pedal rate from that.
+Cookie Bike measures your pedal speed by using an Arduino to detect that Pin 2 is pulled to ground once per cycle. The exercise bike we have as a 3.5mm TS jack which acts like a normally open switch, but which closes for a bit each revolution. Normally this 3.5mm jack goes to a 3.5mm plug that connects to the little dashboard thing that measures your calories and stuff. Instead, if the Arduino's GND is connected to the sleeve of the 3.5mm jack and Pin 2 of the Arduino is connected to the tip of the 3.5mm jack, then the Arduino and Cookie Bike App can measuring how often the circuit is closed, and work out the pedal rate from that.
 
 Your bike needs some way of closing a circuit once per revolution to work with Cookie Bike.
 
 ## Setup
 
-### Arduino setup
+There are 4 parts to the setup:
+
+### 1. Bike setup
+
+Connect the Arduino to the bike in such a way that Pin 2 is pulled to ground once per cycle. See above "Your bike" for details.
+
+### 2. Arduino setup
 
 Cookie Bike App uses [Johnny Five](http://johnny-five.io/) to control an Arduino from the Cookie Bike App.
 I used an Arduino Micro, which required me to [follow these instructions](http://johnny-five.io/platform-support/#arduino-micro):
@@ -44,9 +50,9 @@ I used an Arduino Micro, which required me to [follow these instructions](http:/
 2. Select `Tools > Board > Arduino Micro`
 3. Click Upload
 
-### Node app setup
+### 3. Node app setup (Cookie Bike App)
 
-Build yourself an executable.
+Build yourself an executable if you don't have one. If you already have one for your OS / environment then skip this step.
 
 1. First check the [johnny-five prerequisites](https://github.com/rwaldron/johnny-five/wiki/Getting-Started#prerequisites) to make sure your node setup is all good.
 2. Open terminal and go to `cookie-bike/cookie-bike-app`
@@ -63,7 +69,7 @@ When you run it, either with `yarn && yarn start-dev` or using the executable fi
 
 ![capture](https://user-images.githubusercontent.com/345320/50081281-2dbd7980-0242-11e9-8081-72a8eee60323.PNG)
 
-### Chrome setup
+### 4. Chrome setup (Cookie Bike Script)
 
 1. Open Chrome
 2. Install [Tampermonkey](https://tampermonkey.net)
@@ -77,7 +83,7 @@ Do setup first if you haven't already.
 1. Plug in stuff
   - Exercise bike pedal sensor 3.5mm plug goes to Arduino (Pin 2 and GND).
   - Arduino USB goes to Computer USB Port.
-  - Arduino **must** be pluggen in and operational before starting Cookie Bike App
+  - Arduino **must** be plugged in and operational before starting Cookie Bike App
 2. Start Cookie Bike App
   - Windows: start `/cookie-bike-app/cookie-bike-win.exe`
   - Mac: start `/cookie-bike-app/cookie-bike-mac`
