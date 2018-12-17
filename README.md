@@ -1,4 +1,4 @@
-# Cookie Bike
+# Cookie Bike 🍪🚴
 
 This thing is just a thing I made. Try to use it if you dare.
 
