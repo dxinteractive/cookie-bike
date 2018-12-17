@@ -17,6 +17,10 @@ Cookie Bike has 2 software components:
 Cookie Bike App uses [Johnny Five](http://johnny-five.io/) to control an Arduino from the Cookie Bike App.
 I used an Arduino Micro, which required me to [follow these instructions](http://johnny-five.io/platform-support/#arduino-micro):
 
+#### Install the Arduino IDE
+
+1. Do this https://www.arduino.cc/en/Guide/Windows
+
 #### Install the Firmata library
 
 1. Open the Arduino IDE and navigate to: `Sketch > Include Library > Manage Libraries`.
@@ -34,10 +38,13 @@ I used an Arduino Micro, which required me to [follow these instructions](http:/
 
 ### Node app setup
 
-1. Open terminal and go to `cookie-bike/cookie-bike-app`
-2. Run `yarn && yarn start-dev`
+Build yourself an executable.
 
-**TEMPORARY** This will soon package up an executable so it can simply be run on its own.
+1. Open terminal and go to `cookie-bike/cookie-bike-app`
+2. Run `yarn && yarn start-dev` to try it out
+3. Run `yarn build` to make an executable. It'll have a name like `/cookie-bike-app/cookie-bike-win.exe` or something.
+
+If that all works then you can just use the executable from now on.
 
 ### Chrome setup
 
