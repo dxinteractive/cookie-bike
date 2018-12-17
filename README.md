@@ -48,13 +48,14 @@ I used an Arduino Micro, which required me to [follow these instructions](http:/
 
 Build yourself an executable.
 
-1. Open terminal and go to `cookie-bike/cookie-bike-app`
-2. Run `yarn && yarn start-dev` to try it out
-3. Run a build command to make an executable. Depending on your OS it'll be:
+1. First check the [johnny-five prerequisites](https://github.com/rwaldron/johnny-five/wiki/Getting-Started#prerequisites) to make sure your node setup is all good.
+2. Open terminal and go to `cookie-bike/cookie-bike-app`
+3. Run `yarn && yarn start-dev` to try it out
+4. Run a build command to make an executable. Depending on your OS it'll be:
   - `yarn build-linux` 
   - `yarn build-macos` 
   - `yarn build-win`
-4.  It'll have a name like `/cookie-bike-app/cookie-bike.exe` or something. Also the `johnny-five` library uses bindings specific to your OS, so if you want to compile an executable for an OS / enviroment, you'll need to be on that OS / environment when you build.
+5.  It'll have a name like `/cookie-bike-app/cookie-bike.exe` or something. Also the `johnny-five` library uses bindings specific to your OS, so if you want to compile an executable for an OS / enviroment, you'll need to be on that OS / environment when you build.
 
 If that all works then you can just use the executable from now on. You should also be able to use the executable on other similar computers without them needing to built it themselves, hopefully.
 
