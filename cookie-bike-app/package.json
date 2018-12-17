@@ -8,9 +8,9 @@
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
-    "build-linux": "yarn pkg . --target=linux",
-    "build-macos": "yarn pkg . --target=macos",
-    "build-win": "yarn pkg . --target=win",
+    "build-linux": "yarn pkg . --target=linux && cp ./node_modules/serialport/build/Release/serialport.node serialport.node",
+    "build-macos": "yarn pkg . --target=macos && cp ./node_modules/serialport/build/Release/serialport.node serialport.node",
+    "build-win": "yarn pkg . --target=win && yarn pkg . --target=win && copy .\node_modules\serialport\build\Release\serialport.node serialport.node",
     "start-dev": "node ."
   },
   "dependencies": {
