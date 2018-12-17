@@ -67,7 +67,7 @@ When you run it, either with `yarn && yarn start-dev` or using the executable fi
 
 1. Open Chrome
 2. Install [Tampermonkey](https://tampermonkey.net)
-3. To add `cookie-bike-script/CookieBike.user.js` to Tampermonkey, go to [/cookie-bike/raw/master/cookie-bike-script/CookieBike.user.js](/cookie-bike/raw/master/cookie-bike-script/CookieBike.user.js) and it should prompt you to add the script.
+3. To add `cookie-bike-script/CookieBike.user.js` to Tampermonkey, go to [https://github.com/dxinteractive/cookie-bike/raw/master/cookie-bike-script/CookieBike.user.js](https://github.com/dxinteractive/cookie-bike/raw/master/cookie-bike-script/CookieBike.user.js) and it should prompt you to add the script.
 4. If you go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome it should now ask you if you want to use Cookie Bike
 
 ## Usage
