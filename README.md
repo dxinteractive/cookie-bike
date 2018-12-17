@@ -97,12 +97,12 @@ Do setup first if you haven't already.
   - Windows: start `/cookie-bike-app/cookie-bike-win.exe`
   - Mac: start `/cookie-bike-app/cookie-bike-mac`
   - Linux: start `/cookie-bike-app/cookie-bike-linux`
-3. Go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome
+3. Go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome or Firefox
 4. Pedal!
 
 ### Changing the cookie rate
 
-By default one pedal revolution will give you 6 cookies. That seems about right for our bike on the difficulty we like. You can change this by opening the console in Chrome by pressing `F12`, and typing `CookieBike.setMultiplier()` into it with the new number of cookies per cycle. Example:
+By default one pedal revolution will give you 6 cookies. That seems about right for our bike on the difficulty we like. You can change this by opening the console in Chrome or Firefox by pressing `F12`, and typing `CookieBike.setMultiplier()` into it with the new number of cookies per cycle. Example:
 
 ```
 CookieBike.setMultiplier(10);
