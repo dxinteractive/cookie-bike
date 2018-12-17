@@ -1,5 +1,7 @@
 # Cookie Bike
 
+This thing is just a thing I made. Try to use it if you dare.
+
 Cookie bike goes:
 
 Exercise bike > Arduino > Computer
@@ -50,7 +52,11 @@ Build yourself an executable.
 2. Run `yarn && yarn start-dev` to try it out
 3. Run `yarn build` to make an executable. It'll have a name like `/cookie-bike-app/cookie-bike-win.exe` or something.
 
-If that all works then you can just use the executable from now on.
+If that all works then you can just use the executable from now on. You should also be able to use the executable on other similar computers without them needing to built it themselves, hopefully.
+
+When you run it, either with `yarn && yarn start-dev` or using the executable file, it should look something like this:
+
+![capture](https://user-images.githubusercontent.com/345320/50081281-2dbd7980-0242-11e9-8081-72a8eee60323.PNG)
 
 ### Chrome setup
 
@@ -63,19 +69,20 @@ If that all works then you can just use the executable from now on.
 
 Do setup first if you haven't already.
 
-- Plug in stuff
+1. Plug in stuff
   - Exercise bike pedal sensor 3.5mm plug goes to Arduino (Pin 2 and GND).
   - Arduino USB goes to Computer USB Port.
-- Start Cookie Bike App
+  - Arduino **must** be pluggen in and operational before starting Cookie Bike App
+2. Start Cookie Bike App
   - Windows: start `/cookie-bike-app/cookie-bike-win.exe`
   - Mac: start `/cookie-bike-app/cookie-bike-mac`
   - Linux: start `/cookie-bike-app/cookie-bike-linux`
-- Go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome
-- Pedal!
+3. Go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome
+4. Pedal!
 
 ### Changing the cookie rate
 
-By default one pedal revolution will give you 6 cookies. You can change this by opening the console in Chrome by pressing F12, and typing `CookieBike.setMultiplier()` into it with the new number of cookies per cycle. Example:
+By default one pedal revolution will give you 6 cookies. That seems about right for our bike on the difficulty we like. You can change this by opening the console in Chrome by pressing `F12`, and typing `CookieBike.setMultiplier()` into it with the new number of cookies per cycle. Example:
 
 ```
 CookieBike.setMultiplier(10);
