@@ -1,10 +1,10 @@
 # Cookie Bike 🍪🚴
 
-This thing is just a thing I made. Try to use it if you dare.
+Control clicking the [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) cookie with an exercise bike. Try to use it if you dare. I probably wont help you much. 😈
 
 Cookie bike goes:
 
-Exercise bike > Arduino > Computer
+Exercise bike 🚴 > Arduino 🕹️ > Computer 💻
 - Exercise bike pedal sensor goes to Arduino (Pin 2 and GND).
 - Arduino USB goes to Computer USB Port.
 
@@ -12,7 +12,7 @@ Cookie Bike has 2 software components:
 - Cookie Bike App, a node app that controls the Arduino, calculates the pedalling speed and makes the result available to Cookie Bike Script.
 - Cookie Bike Script, a browser Userscript that asks Cookie Bike App for data and controls the clicking of the Cookie Clicker cookie.
 
-## Your bike
+## Your bike 🚴
 
 Cookie Bike measures the rate you pedal at by detecting a completed circuit once per pedal cycle. The exercise bike we have as a 3.5mm TS jack which acts like a normally open switch, but which closes for a bit each revolution. If the Arduino's GND is connected to the sleeve of the 3.5mm jack and Pin 2 of the Arduino is connected to the tip of the 3.5mm jack, then the Arduino and Cookie Bike App can measuring how often the circuit is closed, and work out the pedal rate from that.
 
