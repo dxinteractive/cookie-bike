@@ -8,9 +8,9 @@
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
-    "build-linux": "yarn pkg . --target=linux && cp ./node_modules/serialport/build/Release/serialport.node serialport.node",
-    "build-macos": "yarn pkg . --target=macos && cp ./node_modules/serialport/build/Release/serialport.node serialport.node",
-    "build-win": "yarn pkg . --target=win && yarn pkg . --target=win && copy .\node_modules\serialport\build\Release\serialport.node serialport.node",
+    "build-linux": "yarn pkg . --target=linux --output=cookie-bike-app/cookie-bike-app && cp ./node_modules/serialport/build/Release/serialport.node cookie-bike-app/serialport.node",
+    "build-macos": "yarn pkg . --target=macos --output=cookie-bike-app/cookie-bike-app && cp ./node_modules/serialport/build/Release/serialport.node cookie-bike-app/serialport.node",
+    "build-win": "yarn pkg . --target=win && yarn pkg . --target=win --output=cookie-bike-app/cookie-bike-app.exe && copy .\node_modules\serialport\build\Release\serialport.node cookie-bike-app\serialport.node",
     "start-dev": "node ."
   },
   "dependencies": {
