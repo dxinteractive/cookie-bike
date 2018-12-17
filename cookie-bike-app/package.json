@@ -8,7 +8,9 @@
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
-    "build": "node pkg .",
+    "build-linux": "yarn pkg . --target=linux",
+    "build-macos": "yarn pkg . --target=macos",
+    "build-win": "yarn pkg . --target=win",
     "start-dev": "node ."
   },
   "dependencies": {
