@@ -61,11 +61,11 @@ Build yourself an executable if you don't have one. If you already have one for 
   - `yarn build-linux` 
   - `yarn build-macos` 
   - `yarn build-win`
-5.  It'll have a name like `/cookie-bike-app/cookie-bike.exe` or something. Also the `johnny-five` library uses bindings specific to your OS, so if you want to compile an executable for an OS / enviroment, you'll need to be on that OS / environment when you build.
+5.  It'll make a new directory with a name like `/cookie-bike-app/ookie-bike-app`. Inside there will be a `cookie-bike.exe` or something, and a `serialport.node` file. The `serialport.node` file is specific to your OS / environment, so if you want to compile an executable for a different OS / enviroment, right now you'll need to be on that OS / environment when you build.
 
 If that all works then you can just use the executable from now on. You should also be able to use the executable on other similar computers without them needing to built it themselves, hopefully.
 
-When you run it, either with `yarn && yarn start-dev` or using the executable file, it should look something like this:
+When you run the executable file (or using `yarn && yarn start-dev`), it should look something like this:
 
 ![capture](https://user-images.githubusercontent.com/345320/50081281-2dbd7980-0242-11e9-8081-72a8eee60323.PNG)
 
@@ -90,13 +90,10 @@ When you run it, either with `yarn && yarn start-dev` or using the executable fi
 Do setup first if you haven't already.
 
 1. Plug in stuff
-  - Exercise bike pedal sensor 3.5mm plug goes to Arduino (Pin 2 and GND).
+  - Exercise bike pedal sensor goes to Arduino (Pin 2 and GND).
   - Arduino USB goes to Computer USB Port.
   - Arduino **must** be plugged in and operational before starting Cookie Bike App
-2. Start Cookie Bike App
-  - Windows: start `/cookie-bike-app/cookie-bike-win.exe`
-  - Mac: start `/cookie-bike-app/cookie-bike-mac`
-  - Linux: start `/cookie-bike-app/cookie-bike-linux`
+2. Start Cookie Bike App by double  licking on the executable inside `/cookie-bike-app/cookie-bike-app`
 3. Go to [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) in Chrome or Firefox
 4. Pedal!
 
