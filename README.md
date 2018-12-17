@@ -1,6 +1,6 @@
 # Cookie Bike 🍪🚴
 
-Control clicking the [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) cookie with an exercise bike. Try to use it if you dare. I probably wont help you much. 😈
+Control clicking the [Cookie Clicker](http://orteil.dashnet.org/cookieclicker/) cookie with an exercise bike. Try to use it if you dare. Ask me questions if you really want but you're kind of on your own, this is a very diy project 😈
 
 Cookie bike goes:
 
