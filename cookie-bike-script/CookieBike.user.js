@@ -35,50 +35,34 @@ const cookieBikeAppReadInterval = 250; // ms
 let clickInterval = 3000;
 let clicking = true;
 let lastClick = new Date();
-let multiplier = 6;
 
 //
-// Saved data
+// Saved data - these functions must each be pure so they can be stringified
 //
 
-const isMultiplierValid = (multiNumber) => typeof multiNumber === "number"
-    && !isNaN(multiNumber)
-    && multiNumber > 0;
-
-const loadMultiplier = () => {
-    try {
-        let savedMultiplier = Number(localStorage.getItem("cookieBikeMultiplier") || 6);
-        if(!isMultiplierValid(savedMultiplier)) {
-            throw new Error();
-        }
-        multiplier = savedMultiplier;
-        console.log(`CookieBikeScript loaded multiplier value: ${multiplier}`);
-    } catch(e) {
-        console.log(`CookieBikeScript error: could not get multiplier`);
-    }
-};
-
-const getMultiplier = () => multiplier;
+const getMultiplier = () => Number(localStorage.getItem("cookieBikeMultiplier") || 6);
 
 const setMultiplier = (multiNumber) => {
+    const isMultiplierValid = (multiNumber) => typeof multiNumber === "number"
+        && !isNaN(multiNumber)
+        && multiNumber > 0;
+    
     try {
         if(!isMultiplierValid(multiNumber)) {
             throw new Error();
         }
         localStorage.setItem("cookieBikeMultiplier", multiNumber + "");
-        multiplier = multiNumber;
-     } catch(e) {
+    } catch(e) {
         console.log("Cookie Bike Error: could not set multiplier");
     }
+    return Number(localStorage.getItem("cookieBikeMultiplier") || 6);
 };
 
 const resetMultiplier = (multiNumber) => {
-    try {
-        localStorage.removeItem("cookieBikeMultiplier");
-     } catch(e) {
-        console.log("Cookie Bike Error: could not reset multiplier");
-    }
+    localStorage.removeItem("cookieBikeMultiplier");
+    return Number(localStorage.getItem("cookieBikeMultiplier") || 6);
 };
+
 //
 // Cookie Bike Script > Cookie Clicker
 //
@@ -88,7 +72,7 @@ const tick = () => {
     let diff = now - lastClick;
     if(clicking && diff > clickInterval) {
         lastClick = now;
-        window.Game.ClickCookie();
+        window.eval('Game.ClickCookie()');
         console.log(`${1000 / clickInterval} clicks per second!`);
     }
     return Promise.resolve();
@@ -104,7 +88,7 @@ const readSpeed = () => {
         .then(response => {
             clicking = !!response;
             clickInterval = response
-                ? Number(response) / multiplier
+                ? Number(response) / getMultiplier()
                 : 0;
         })
         .catch(() => {
@@ -119,11 +103,14 @@ const readSpeed = () => {
 // console object
 //
 
-window.CookieBike = {
-    getMultiplier,
-    setMultiplier,
-    resetMultiplier
-};
+window.eval(`
+    window.CookieBike = {
+        getMultiplier: ${getMultiplier.toString()},
+        setMultiplier: ${setMultiplier.toString()},
+        resetMultiplier: ${resetMultiplier.toString()},
+    };
+`);
+
 
 //
 // startup and prompts
@@ -131,7 +118,6 @@ window.CookieBike = {
 
 const startCookieBike = () => {
     alert('OK! Start the Cookie Bike App and get ready to pedal!');
-    loadMultiplier();
     repeatWith(tick, 1);
     repeatWith(readSpeed, cookieBikeAppReadInterval);
 };
@@ -143,7 +129,7 @@ const askCookieBike = () => {
 };
 
 const waitUntilLoaded = () => {
-    if(!window.Game.ClickCookie) {
+    if(!window.eval('Game.ClickCookie')) {
         return Promise.resolve();
     }
     setTimeout(askCookieBike, 1000);
